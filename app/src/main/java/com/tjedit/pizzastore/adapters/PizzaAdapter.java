@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.tjedit.pizzastore.R;
 import com.tjedit.pizzastore.datas.PizzaData;
 
@@ -37,6 +39,8 @@ public class PizzaAdapter extends ArrayAdapter<PizzaData> {
 
         TextView pizzaNameTxt = row.findViewById(R.id.pizzaNameTxt);
         TextView openTimeTxt = row.findViewById(R.id.openTimeTxt);
+        ImageView logoImageView = row.findViewById(R.id.logoImageView);
+        Glide.with(mContext).load(pizzaData.imageURL).into(logoImageView);
 
         pizzaNameTxt.setText(pizzaData.pizzaStoreNameTxt);
         openTimeTxt.setText(pizzaData.openTimeTxt);

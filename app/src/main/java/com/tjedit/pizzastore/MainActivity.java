@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        act = DataBindingUtil.setContentView(this,R.layout.activity_main);
-        super.onCreate(savedInstanceState);
 
+        super.onCreate(savedInstanceState);
+        act = DataBindingUtil.setContentView(this,R.layout.activity_main);
         pizzaAdapter = new PizzaAdapter(MainActivity.this, pizzaData);
         act.pizzaList.setAdapter(pizzaAdapter);
 
@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity{
 
     }
     void fill(){
-        pizzaData.add(new PizzaData("도미넛피자","09:00~21:00"));
-        pizzaData.add(new PizzaData("피자헛피자","09:00~21:00"));
-        pizzaData.add(new PizzaData("맥시코피자","09:00~21:00"));
-        pizzaData.add(new PizzaData("한국피자","09:00~21:00"));
+        pizzaData.add(new PizzaData("도미넛피자","09:00~21:00","https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2"));
+        pizzaData.add(new PizzaData("피자헛피자","09:00~21:00","https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2"));
+        pizzaData.add(new PizzaData("맥시코피자","09:00~21:00","https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2"));
+        pizzaData.add(new PizzaData("파파피자","09:00~21:00","https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2"));
 
     }
 }
