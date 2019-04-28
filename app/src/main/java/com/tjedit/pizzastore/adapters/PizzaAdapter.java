@@ -29,6 +29,8 @@ public class PizzaAdapter extends ArrayAdapter<PizzaData> {
     LayoutInflater inf;
 
 
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -44,6 +46,8 @@ public class PizzaAdapter extends ArrayAdapter<PizzaData> {
 
         pizzaNameTxt.setText(pizzaData.pizzaStoreNameTxt);
         openTimeTxt.setText(pizzaData.openTimeTxt);
+
+
 
         return row;
     }

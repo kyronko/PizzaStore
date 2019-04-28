@@ -1,9 +1,12 @@
 package com.tjedit.pizzastore;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 
 import com.tjedit.pizzastore.adapters.PizzaAdapter;
 import com.tjedit.pizzastore.databinding.ActivityMainBinding;
@@ -12,26 +15,28 @@ import com.tjedit.pizzastore.datas.PizzaData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends BaseActivity{
 
     ActivityMainBinding act;
     List<PizzaData> pizzaData = new ArrayList<>();
     PizzaAdapter pizzaAdapter;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        act = DataBindingUtil.setContentView(this,R.layout.activity_main);
+
         pizzaAdapter = new PizzaAdapter(MainActivity.this, pizzaData);
         act.pizzaList.setAdapter(pizzaAdapter);
-
-
         fill();
+        bindViews();
+        setupEvents();
+        setValues();
+
 
     }
+
 
 
     void fill(){
@@ -43,5 +48,28 @@ public class MainActivity extends AppCompatActivity{
         pizzaData.add(new PizzaData("피자스쿨", "09:00~21:00", "010-1234-5678", "https://modo-phinf.pstatic.net/20150501_269/1430484184544WKwLF_JPEG/mosa7NPaR2.jpeg?type=f320_320"));
         pizzaData.add(new PizzaData("피자나라 치킨공주", "09:00~21:00", "010-1234-5678", "http://www.newsworker.co.kr/news/photo/201810/22592_19806_5940.jpg"));
 
+    }
+
+    @Override
+    public void setupEvents() {
+        act.pizzaList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PizzaData store = pizzaData.get(position);
+                Intent intent = new Intent(mContext,Detail_Store.class);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void setValues() {
+
+    }
+
+    @Override
+    public void bindViews() {
+        act = DataBindingUtil.setContentView(this,R.layout.activity_main);
     }
 }
